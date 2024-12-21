@@ -8,7 +8,6 @@ const ventas = [
                     
                     "id": "6761e33e2610daf16e8fda5a",
                     "producto": "Volkswagen Fox",
-                    "patentamiento": 2012,
                     "fechaDeCompra":"2024-09-20T02:49:19 +03:00",
                     "cantidad": 1,
                     "precio": 8500000,
@@ -36,7 +35,7 @@ const ventas = [
         "cliente": "Acosta, Esteban",
         "fechaDeCompra": "2022-07-05T02:59:19 +03:00",
         "detalle": [{
-            "id": "6761e33ebad3ed227837010a",
+                    "id": "6761e33ebad3ed227837010a",
                     "producto": "Ford Focus",
                     "fechaDeCompra":"2024-07-18T02:49:19 +04:22",
                     "cantidad": 1,
@@ -50,7 +49,7 @@ const ventas = [
         "cliente": "Silva, Leandro",
         "fechaDeCompra": "2022-07-05T02:59:19 +03:00",
         "detalle": [{
-            "id": "6761e6aa2a3045847adccf0e",
+                    "id": "6761e6aa2a3045847adccf0e",
                     "producto": "Renault Clio",
                     "fechaDeCompra":"2024-07-21T02:49:19 +04:37",
                     "cantidad": 1,
@@ -65,7 +64,7 @@ const ventas = [
         "cliente": "Fernandez, Patricia",
         "fechaDeCompra": "2022-07-05T02:59:19 +03:00",
         "detalle":[{
-            "id": "6761e6aa476d18e6d67568ff",
+                    "id": "6761e6aa476d18e6d67568ff",
                     "producto": "Peugeot 208",
                     "fechaDeCompra":"2024-09-28T02:49:19 +06:37",
                     "cantidad": 1,

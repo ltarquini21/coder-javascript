@@ -100,40 +100,34 @@ while (nombre + cotizacionAuto){
     }
 }
 
-class Auto{
+class Car{
     id = "";
     modelo = "";
     year = "";
-    cantidad = 0;
+    kms = 0;
+    precio = 0;
     precioDescuento = 0;
-    descripcion = "Hola";
-        constructor(id,modelo, year, descripcion, precio, precioDescuento, cantidad){
+    descripcion = "";
+    cantidad = 0;
+        constructor(id,modelo, year, descripcion, precio, precioDescuento, cantidad, kms){
         this.id = id;
         this.modelo = modelo;
         this.year = year;
-        this.descripcion = descripcion;
+        this.kms = kms;
         this.precio = precio;
         this.precioDescuento = precioDescuento;
         this.cantidad = cantidad;
+        this.descripcion = descripcion;
     }
 
 toString(){
 
-    return this.modelo + " - " + this.year
+    return `El modelo que cotizaste es ${this.modelo} y es del año ${this.year} con ${this.kms} kilómetros`;
 }
+}
+const modeloAuto = new Car(1, 'Volkswagen Fox', 2012, 'Sedán', 8500000, 120000, 1, 78453);
 
-getMontoDescuento(){
-    return this.precio * this.precioDescuento
-}
-getSubTotal(){
-    return (this.precio * this.cantidad) - this.getMontoDescuento();
-}
-}
-// const modeloAuto = new Auto(modelo, 2015);
-// modeloAuto.verModelo();
-
-// verModelo()
-//     console.log(`El modelo que cotizaste es el ${this.modelo} y es ${this.year}`);
+console.log(modeloAuto.toString());
 
 class FacturaCompra{
     id = "";
@@ -162,108 +156,31 @@ getDetalle(){
 console.table(ventas);
 
 const ventasMapeado = ventas.map((unaVenta)=>{
-    // id, cliente, fechaDeCompra, detalle =[]
     return new FacturaCompra(unaVenta.id, unaVenta.cliente, unaVenta.fechaDeCompra, unaVenta.detalle.map((unItem)=>{
-        return new Auto(unItem.id, unItem.producto, unItem.precio, unItem.fechaDeCompra, unItem.cantidad, unItem.precioDescuento, unItem.patentamiento);
+        return new Car(unItem.id, unItem.producto, unItem.fechaDeCompra, unItem.cantidad, unItem.precio, unItem.precioDescuento);
     }));
 });
 
 console.log(ventasMapeado);
-// class Movimiento {
-//     numeroCuentaCliente = "";
-//     fechaHora = new Date();
-//     descripcion = "";
-//     monto = 0;
-//     tipo = "";
 
+const autosBusqueda = [
+    {nombre: 'Volkswagen Fox', precio: 8500000},
+    {nombre: 'Ford Fiesta', precio: 12000000},
+    {nombre: 'Ford Focus', precio: 15000000},
+    {nombre: 'Renault Clio', precio:7500000},
+    {nombre: 'Peugeot 208', precio:15500000},
+]
 
-//     constructor(numero, descripcion, monto) {
-//         this.numeroCuentaCliente = numero;
-//         this.fechaHora = new Date();
-//         this.descripcion = descripcion;
-//         this.monto = monto;
-//         if (monto >= 0) {
-//             this.tipo = "INGRESO";
+const resultadoFind = autosBusqueda.find((unAuto) => unAuto.nombre === 'Ford Fiesta') 
+const resultadoFind2 = autosBusqueda.find((unAuto) => unAuto.nombre === 'Volkswagen Fox') 
 
-//         }
-//         else {
-//             this.tipo = "EGRESO";
-//         }
+console.log (resultadoFind);
+console.log (resultadoFind2);
 
-//     }
-// }
-// class CuentaBanco {
-//     cliente = "";
-//     numeroCuenta = "";
-//     saldo = 0;
-//     fechaCreacion = "";
-//     habilitado = true;
-//     movimientos = [];
+const filterPorNombre = autosBusqueda.filter((unAuto) => unAuto.nombre === 'Ford Fiesta')
+const filterPorPrecio = autosBusqueda.filter((unAuto) => unAuto.precio > '15000000')
+const filterPorPrecio2 = autosBusqueda.filter((unAuto) => unAuto.precio > '16000000')
 
-//     constructor(clienteNombre, numero, saldo, fecha, habilitado) {
-//         this.cliente = clienteNombre;
-//         this.numeroCuenta = numero;
-//         this.saldo = saldo;
-//         this.fechaCreacion = new Date().toISOString;
-//         this.habilitado = true;
-//         this.movimientos = [];
-        
-//     }
-//     toString() {
-//         return this.numeroCuenta + "($ " + this.saldo.toFixed(2) + ")";
-
-//     }
-//     equals(entity) {
-
-//         if (!entity) { return false; }
-//         return this.numeroCuenta === entity.numeroCuenta
-//     }
-
-//     compareAmount(amount) {
-//         return this.saldo === amount
-//     }
-//     getMovimientos() {
-//         return this.movimientos;
-//     }
-    
-//     addMovement(movement) {
-//         debugger
-//         if (!movement) { return false }
-//         if (movement.monto < 0 && this.saldo < (movement.monto * -1)) {
-//             return false;
-//         }
-//         this.movimientos.push(movement);
-//         if (movement.monto < 0) {
-//             this.saldo = this.saldo + movement.monto;
-//         }
-//         else{
-            
-//             this.saldo = this.saldo -(movement.monto *-1);
-//         }
-//         return true;
-//     }
-// }
-
-// // Creacion de objetos
-// const cuenta1 = new CuentaBanco("Laureano", "5000", 40000);
-// cuenta1.addMovement(new Movimiento("5001", "Compra en Musimundo", -2300));
-// cuenta1.addMovement(new Movimiento("5002", "Pago de internet", -1800));
-// cuenta1.addMovement(new Movimiento("5000", "Ingreso de dinero", 15000));
-// const cuenta2 = new CuentaBanco("Fiorella", "2500", 3000);
-
-// // Comparamos cuentas
-// console.table(cuenta1);
-// console.table(cuenta2);
-
-// if (cuenta1.equals(cuenta2)) {
-//     console.log("Las cuentas son iguales");
-// }
-// else {
-//     console.log("Las cuentas NO son iguales");
-
-// }
-
-// console.log(cuenta2.compareAmount(cuenta1.saldo));
-// console.log(cuenta2.compareAmount(8000));
-// console.log(cuenta2.compareAmount(5000));
-// console.log(cuenta2.compareAmount(3000));
+console.log(filterPorNombre);
+console.log(filterPorPrecio);
+console.log(filterPorPrecio2);
