@@ -5,7 +5,7 @@ let cotizacionAuto;
 while (nombre + cotizacionAuto) {
     cotizacionAuto = prompt("Bienvenida/o " + nombre + "\nIngresá 1 si querés recibir una cotización por E-mail. \nIngresá 2 si querés cotizarlo a través de nuestra Web. \nIngresá 3 si querés que nos comuniquemos con usted.");
     if (cotizacionAuto === "1" || cotizacionAuto === "2" || cotizacionAuto === "3") {
-        
+
     }
     if (cotizacionAuto == 1) {
         alert("Elegiste cotizar vía mail")
@@ -22,6 +22,7 @@ while (nombre + cotizacionAuto) {
     else {
         alert("Elige una opción correspondiente")
     }
+// cotizacionAuto == 1 ? alert("Elegiste cotizar vía mail") : alert("Elegiste cotizar vía web")
 }
 
 let cotizacion;
@@ -100,7 +101,13 @@ while (nombre + cotizacionAuto){
     }
 }
 
-class Car{
+const form = document.getElementById("myInput");
+form.addEventListener("submit", (event)=> {
+    event.preventDefault();
+    console.log(event);
+    
+})
+class Car {
     id = "";
     modelo = "";
     year = "";
@@ -109,7 +116,7 @@ class Car{
     precioDescuento = 0;
     descripcion = "";
     cantidad = 0;
-        constructor(id,modelo, year, descripcion, precio, precioDescuento, cantidad, kms){
+    constructor(id, modelo, year, descripcion, precio, precioDescuento, cantidad, kms) {
         this.id = id;
         this.modelo = modelo;
         this.year = year;
@@ -120,67 +127,134 @@ class Car{
         this.descripcion = descripcion;
     }
 
-toString(){
+    toString() {
 
-    return `El modelo que cotizaste es ${this.modelo} y es del año ${this.year} con ${this.kms} kilómetros`;
-}
+        return `El modelo que cotizaste es ${this.modelo} y es del año ${this.year} con ${this.kms} kilómetros`;
+    }
 }
 const modeloAuto = new Car(1, 'Volkswagen Fox', 2012, 'Sedán', 8500000, 120000, 1, 78453);
 
 console.log(modeloAuto.toString());
 
-class FacturaCompra{
-    id = "";
-    cliente = "";
-    fechaDeCompra = new Date();
-    detalle = [];
-    
-    constructor(id, cliente, fechaDeCompra = new Date(), detalle =[]){
-        this.id = id;
-        this.cliente = cliente;
-        this.fechaDeCompra = fechaDeCompra;
-        this.detalle = detalle;
+    class FacturaCompra {
+        id = "";
+        cliente = "";
+        fechaDeCompra = new Date();
+        detalle = [];
+
+        constructor(id, cliente, fechaDeCompra = new Date(), detalle = []) {
+            this.id = id;
+            this.cliente = cliente;
+            this.fechaDeCompra = fechaDeCompra;
+            this.detalle = detalle;
+        }
+
+        toString() {
+            return this.id + " - " + this.cliente
+        }
+        addItem(item) {
+            this.detalle.push(item)
+        }
+        getDetalle() {
+            return this.detalle
+        }
     }
 
-toString(){
-    return this.id + " - " + this.cliente
+    console.table(ventas);
+    // VERIFICAR EL ORDEN DE LOS ITEMS
+    const ventasMapeado = ventas.map((unaVenta) => {
+        return new FacturaCompra(unaVenta.id, unaVenta.cliente, unaVenta.fechaDeCompra, unaVenta.detalle.map((unItem) => {
+            return new Car(unItem.id, unItem.producto, unItem.fechaDeCompra, unItem.cantidad, unItem.precio, unItem.precioDescuento);
+        }));
+    });
+
+    console.log(ventasMapeado);
+
+    const autosBusqueda = [
+        { nombre: 'Volkswagen Fox', precio: 8500000 },
+        { nombre: 'Ford Fiesta', precio: 12000000 },
+        { nombre: 'Ford Focus', precio: 15000000 },
+        { nombre: 'Renault Clio', precio: 7500000 },
+        { nombre: 'Peugeot 208', precio: 15500000 },
+    ]
+
+    const resultadoFind = autosBusqueda.find((unAuto) => unAuto.nombre === 'Ford Fiesta')
+    const resultadoFind2 = autosBusqueda.find((unAuto) => unAuto.nombre === 'Volkswagen Fox')
+
+    console.log(resultadoFind);
+    console.log(resultadoFind2);
+
+    const filterPorNombre = autosBusqueda.filter((unAuto) => unAuto.nombre === 'Ford Fiesta')
+    const filterPorPrecio = autosBusqueda.filter((unAuto) => unAuto.precio > '15000000')
+    const filterPorPrecio2 = autosBusqueda.filter((unAuto) => unAuto.precio > '16000000')
+
+    console.log(filterPorNombre);
+    console.log(filterPorPrecio);
+    console.log(filterPorPrecio2);
+
+let cliente1 = {
+        nombre: "Tarquini, Laureano",
+        edad: 28,
+        productoComprado: "Volkswagen Fox",        
+};
+
+localStorage.setItem("primerObjeto", cliente1);
+let unObjetoRecuperado = localStorage.getItem("primerObjeto");
+// alert("El valor que tiene la clave unTexto en el localstorage es: " + unObjetoRecuperado);
+console.log(unObjetoRecuperado);
+
+let cliente2 = {
+    nombre: "Cruz, Pedro",
+    edad: 34,
+    productoComprado: "Ford Fiesta",
 }
-addItem(item){
-    this.detalle.push(item)
+localStorage.setItem("segundoObjeto", cliente2);
+
+let unObjetoRecuperado2 = localStorage.getItem("segundoObjeto");
+
+console.log(unObjetoRecuperado2);
+
+let cliente3 = {
+    nombre: "Acosta, Esteban",
+    edad: 32,
+    productoComprado: "Ford Focus",
 }
-getDetalle(){
-    return this.detalle
+localStorage.setItem("tercerObjeto", cliente3);
+
+let unObjetoRecuperado3 = localStorage.getItem("tercerObjeto");
+
+console.log(unObjetoRecuperado3);
+
+
+let cliente4 = {
+    nombre: "Silva, Leandro",
+    edad: 43,
+    productoComprado: "Renault Clio",
 }
+localStorage.setItem("cuartoObjeto", cliente4);
+
+let unObjetoRecuperado4 = localStorage.getItem("cuartoObjeto");
+
+console.log(unObjetoRecuperado4);
+
+let cliente5 = {
+    nombre: "Fernandez, Patricia",
+    edad: 54,
+    productoComprado: "Peugeot 208",
 }
+localStorage.setItem("quintoObjeto", cliente5);
 
-console.table(ventas);
+let unObjetoRecuperado5 = localStorage.getItem("quintoObjeto");
 
-const ventasMapeado = ventas.map((unaVenta)=>{
-    return new FacturaCompra(unaVenta.id, unaVenta.cliente, unaVenta.fechaDeCompra, unaVenta.detalle.map((unItem)=>{
-        return new Car(unItem.id, unItem.producto, unItem.fechaDeCompra, unItem.cantidad, unItem.precio, unItem.precioDescuento);
-    }));
-});
+console.log(unObjetoRecuperado5);
 
-console.log(ventasMapeado);
-
-const autosBusqueda = [
-    {nombre: 'Volkswagen Fox', precio: 8500000},
-    {nombre: 'Ford Fiesta', precio: 12000000},
-    {nombre: 'Ford Focus', precio: 15000000},
-    {nombre: 'Renault Clio', precio:7500000},
-    {nombre: 'Peugeot 208', precio:15500000},
-]
-
-const resultadoFind = autosBusqueda.find((unAuto) => unAuto.nombre === 'Ford Fiesta') 
-const resultadoFind2 = autosBusqueda.find((unAuto) => unAuto.nombre === 'Volkswagen Fox') 
-
-console.log (resultadoFind);
-console.log (resultadoFind2);
-
-const filterPorNombre = autosBusqueda.filter((unAuto) => unAuto.nombre === 'Ford Fiesta')
-const filterPorPrecio = autosBusqueda.filter((unAuto) => unAuto.precio > '15000000')
-const filterPorPrecio2 = autosBusqueda.filter((unAuto) => unAuto.precio > '16000000')
-
-console.log(filterPorNombre);
-console.log(filterPorPrecio);
-console.log(filterPorPrecio2);
+const cliente1JSON = { id: 1, nombre: "Tarquini, Laureano",
+    edad: 28,
+    productoComprado: "Volkswagen Fox"
+}
+// for(let i = 0; i < localStorage.length; i++){
+//     let clave = localStorage.key(i);
+//     console.log("Clave:" + clave);
+//     console.log("Valor:" + localStorage.getItem(clave));
+        
+// }
