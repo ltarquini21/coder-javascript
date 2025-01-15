@@ -100,75 +100,55 @@ while (nombre + cotizacionAuto){
         alert("Elige una opción válida");
     }
 }
+const modelos = []
 
-const form = document.getElementById("myInput");
+const buscarModeloPorNombre = (modelo) => {
+    return modelos.find((car) => car.descripcion.toLowerCase() === modelo.trim().toLowerCase());
+}
+const validandoInputs = (modelo = "carForm") => {
+    if(modelo.trim().length === 0)
+        {return "El modelo se encuentra vacío"}
+    if(modelo.trim().length < 5)
+        {return "El modelo debe tener al menos 5 carácteres"};
+    return null;
+    
+}
+
+
+const crearEvento = (modelo) => {
+    const error = validandoInputs(modelo);
+    if(error !== null){
+        alert(error);
+        return false;
+    
+    }
+
+    const car = buscarModeloPorNombre(modelo);
+    if(car){
+        alert("El modelo ya existe");
+        return false;
+    }
+    const nuevoModelo = new Car(modelos.length +1, modelo, new FacturaCompra(1, "Pendiente"));
+    modelos.unshift(nuevoModelo);
+    return true;
+
+}
+
+
+const form = document.getElementById("carForm");
 form.addEventListener("submit", (event)=> {
     event.preventDefault();
     console.log(event);
     
+    const nombreAutoIngresado = document.getElementById("carName").value;
+    const modeloAutoIngresado = document.getElementById("carModel").value;
+    console.log(`El auto ingresado es: ${nombreAutoIngresado}, y el modelo es: ${modeloAutoIngresado}`);
+    if(crearEvento(nombreAutoIngresado, modeloAutoIngresado)){
+        console.table(modelos);
+        form.reset();
+    }
 })
-class Car {
-    id = "";
-    modelo = "";
-    year = "";
-    kms = 0;
-    precio = 0;
-    precioDescuento = 0;
-    descripcion = "";
-    cantidad = 0;
-    constructor(id, modelo, year, descripcion, precio, precioDescuento, cantidad, kms) {
-        this.id = id;
-        this.modelo = modelo;
-        this.year = year;
-        this.kms = kms;
-        this.precio = precio;
-        this.precioDescuento = precioDescuento;
-        this.cantidad = cantidad;
-        this.descripcion = descripcion;
-    }
 
-    toString() {
-
-        return `El modelo que cotizaste es ${this.modelo} y es del año ${this.year} con ${this.kms} kilómetros`;
-    }
-}
-const modeloAuto = new Car(1, 'Volkswagen Fox', 2012, 'Sedán', 8500000, 120000, 1, 78453);
-
-console.log(modeloAuto.toString());
-
-    class FacturaCompra {
-        id = "";
-        cliente = "";
-        fechaDeCompra = new Date();
-        detalle = [];
-
-        constructor(id, cliente, fechaDeCompra = new Date(), detalle = []) {
-            this.id = id;
-            this.cliente = cliente;
-            this.fechaDeCompra = fechaDeCompra;
-            this.detalle = detalle;
-        }
-
-        toString() {
-            return this.id + " - " + this.cliente
-        }
-        addItem(item) {
-            this.detalle.push(item)
-        }
-        getDetalle() {
-            return this.detalle
-        }
-    }
-
-    console.table(ventas);
-    // VERIFICAR EL ORDEN DE LOS ITEMS
-    const ventasMapeado = ventas.map((unaVenta) => {
-        return new FacturaCompra(unaVenta.id, unaVenta.cliente, unaVenta.fechaDeCompra, unaVenta.detalle.map((unItem) => {
-            return new Car(unItem.id, unItem.producto, unItem.fechaDeCompra, unItem.cantidad, unItem.precio, unItem.precioDescuento);
-        }));
-    });
-
-    console.log(ventasMapeado);
 
     const autosBusqueda = [
         { nombre: 'Volkswagen Fox', precio: 8500000 },
@@ -192,66 +172,66 @@ console.log(modeloAuto.toString());
     console.log(filterPorPrecio);
     console.log(filterPorPrecio2);
 
-let cliente1 = {
-        nombre: "Tarquini, Laureano",
-        edad: 28,
-        productoComprado: "Volkswagen Fox",        
-};
+// let cliente1 = {
+//         nombre: "Tarquini, Laureano",
+//         edad: 28,
+//         productoComprado: "Volkswagen Fox",        
+// };
 
-localStorage.setItem("primerObjeto", cliente1);
-let unObjetoRecuperado = localStorage.getItem("primerObjeto");
-// alert("El valor que tiene la clave unTexto en el localstorage es: " + unObjetoRecuperado);
-console.log(unObjetoRecuperado);
+// localStorage.setItem("primerObjeto", cliente1);
+// let unObjetoRecuperado = localStorage.getItem("primerObjeto");
+// // alert("El valor que tiene la clave unTexto en el localstorage es: " + unObjetoRecuperado);
+// console.log(unObjetoRecuperado);
 
-let cliente2 = {
-    nombre: "Cruz, Pedro",
-    edad: 34,
-    productoComprado: "Ford Fiesta",
-}
-localStorage.setItem("segundoObjeto", cliente2);
+// let cliente2 = {
+//     nombre: "Cruz, Pedro",
+//     edad: 34,
+//     productoComprado: "Ford Fiesta",
+// }
+// localStorage.setItem("segundoObjeto", cliente2);
 
-let unObjetoRecuperado2 = localStorage.getItem("segundoObjeto");
+// let unObjetoRecuperado2 = localStorage.getItem("segundoObjeto");
 
-console.log(unObjetoRecuperado2);
+// console.log(unObjetoRecuperado2);
 
-let cliente3 = {
-    nombre: "Acosta, Esteban",
-    edad: 32,
-    productoComprado: "Ford Focus",
-}
-localStorage.setItem("tercerObjeto", cliente3);
+// let cliente3 = {
+//     nombre: "Acosta, Esteban",
+//     edad: 32,
+//     productoComprado: "Ford Focus",
+// }
+// localStorage.setItem("tercerObjeto", cliente3);
 
-let unObjetoRecuperado3 = localStorage.getItem("tercerObjeto");
+// let unObjetoRecuperado3 = localStorage.getItem("tercerObjeto");
 
-console.log(unObjetoRecuperado3);
+// console.log(unObjetoRecuperado3);
 
 
-let cliente4 = {
-    nombre: "Silva, Leandro",
-    edad: 43,
-    productoComprado: "Renault Clio",
-}
-localStorage.setItem("cuartoObjeto", cliente4);
+// let cliente4 = {
+//     nombre: "Silva, Leandro",
+//     edad: 43,
+//     productoComprado: "Renault Clio",
+// }
+// localStorage.setItem("cuartoObjeto", cliente4);
 
-let unObjetoRecuperado4 = localStorage.getItem("cuartoObjeto");
+// let unObjetoRecuperado4 = localStorage.getItem("cuartoObjeto");
 
-console.log(unObjetoRecuperado4);
+// console.log(unObjetoRecuperado4);
 
-let cliente5 = {
-    nombre: "Fernandez, Patricia",
-    edad: 54,
-    productoComprado: "Peugeot 208",
-}
-localStorage.setItem("quintoObjeto", cliente5);
+// let cliente5 = {
+//     nombre: "Fernandez, Patricia",
+//     edad: 54,
+//     productoComprado: "Peugeot 208",
+// }
+// localStorage.setItem("quintoObjeto", cliente5);
 
-let unObjetoRecuperado5 = localStorage.getItem("quintoObjeto");
+// let unObjetoRecuperado5 = localStorage.getItem("quintoObjeto");
 
-console.log(unObjetoRecuperado5);
+// console.log(unObjetoRecuperado5);
 
-const cliente1JSON = { id: 1, nombre: "Tarquini, Laureano",
-    edad: 28,
-    productoComprado: "Volkswagen Fox"
-}
+// const cliente1JSON = { id: 1, nombre: "Tarquini, Laureano",
+//     edad: 28,
+//     productoComprado: "Volkswagen Fox"
+// }
 // for(let i = 0; i < localStorage.length; i++){
 //     let clave = localStorage.key(i);
 //     console.log("Clave:" + clave);

@@ -1,113 +1,99 @@
-* {
-    box-sizing: border-box;
-}
-
-/* Remove margins and padding from the list */
-ul {
+/* Centrar el contenido de la página */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
     margin: 0;
     padding: 0;
-}
-
-/* Style the list items */
-ul li {
-    cursor: pointer;
-    position: relative;
-    padding: 12px 8px 12px 40px;
-    background: #eee;
-    font-size: 18px;
-    transition: 0.2s;
-
-    /* make the list items unselectable */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* Set all odd list items to a different color (zebra-stripes) */
-ul li:nth-child(odd) {
-    background: #f9f9f9;
-}
-
-/* Darker background-color on hover */
-ul li:hover {
-    background: #ddd;
-}
-
-/* When clicked on, add a background color and strike out text */
-ul li.checked {
-    background: #888;
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columna */
+    align-items: center; /* Centra horizontalmente */
+    justify-content: flex-start; /* Alinea al principio de la página */
+    min-height: 100vh;
+  }
+  
+  /* Título del formulario */
+  h1 {
+    text-align: center; /* Centrar texto */
+    color: #0056b3;
+    font-size: 28px; /* Tamaño del texto */
+    font-weight: bold; /* Negrita */
+    margin: 20px 0; /* Espaciado superior e inferior */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  }
+  
+  
+  /* Estilo del contenedor */
+  form {
+    background-color: #ffffff;
+    padding: 25px 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Etiquetas */
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* Campos de entrada */
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Botón de envío */
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
     color: #fff;
-    text-decoration: line-through;
-}
-
-/* Add a "checked" mark when clicked on */
-ul li.checked::before {
-    content: '';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
-}
-
-/* Style the close button */
-.close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 12px 16px 12px 16px;
-}
-
-.close:hover {
-    background-color: #f44336;
-    color: white;
-}
-
-/* Style the header */
-.header {
-    background-color: #f44336;
-    padding: 30px 40px;
-    color: white;
-    text-align: center;
-}
-
-/* Clear floats after the header */
-.header:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Style the input */
-input {
-    margin: 0;
     border: none;
-    border-radius: 0;
-    width: 75%;
-    padding: 10px;
-    float: left;
+    border-radius: 8px;
     font-size: 16px;
-}
-
-/* Style the "Add" button */
-.addBtn {
-    padding: 10px;
-    width: 25%;
-    background: #f1870d;
-    color: #0011ff;
-    float: left;
-    text-align: center;
-    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0;
-}
-
-.addBtn:hover {
-    background-color: #bbb;
-}
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  /* Zona de resultado */
+  #result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
+    color: #0d47a1;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  

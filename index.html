@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style/style.css" />
-    <title>JavaScript</title>
-  </head>
-  <body>
-    <h1>CURSO JavaScript Preentrega N°3</h1>
-    <div id="myDIV" class="header">
-      <h2>Agregar autos que no estén cotizados:</h2>
-      <input type="text" id="myInput" placeholder="Autos a agregar" />
-      <span onclick="newElement()" class="addBtn">AGREGAR</span>
-    </div>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style/style.css">
+  <title>Cotización de Autos</title>
+</head>
+<body>
+  <h1>Cotización de Autos | Preentrega N°3</h1>
+  <form id="carForm">
+    
+    <label for="carName">Nombre del auto a cotizar:</label>
+    <input type="text" id="carName" name="carName" placeholder="Ej: Toyota Corolla">
+    <label for="carModel">Año:</label>
+    <input type="number" id="carModel" name="carModel" placeholder="Ej: 2023">
+    <br><br>
 
-    <script src="./scripts/constantes.js"></script>
-    <script src="./scripts/main.js"></script>
-  </body>
+    
+    <button type="submit">Enviar</button>
+  </form>
+
+  
+  <div id="result" style="margin-top: 20px; color: green; font-weight: bold;"></div>
+  <script src="./scripts/constantes.js"></script>
+  <script src="./classes/car.js"></script>
+  <script src="./classes/facturacompra.js"></script>
+  <script src="./scripts/main.js"></script>
+</body>
 </html>
+
