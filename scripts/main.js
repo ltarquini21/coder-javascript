@@ -47,9 +47,9 @@ const crearEvento = (modelo, year) => {
     }
 
     const nuevoModelo = new Car(
-        modelos.length + 1,  // ID
-        modelo,              // Nombre del modelo
-        year                 // Año del modelo
+        modelos.length + 1,
+        modelo,
+        year                 
     );
 
     localStorage.setItem("unModelo", JSON.stringify(nuevoModelo));
