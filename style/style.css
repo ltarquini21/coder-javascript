@@ -1,4 +1,4 @@
-/* Centrar el contenido de la página */
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f0f8ff;
@@ -6,24 +6,24 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Organiza los elementos en columna */
-    align-items: center; /* Centra horizontalmente */
-    justify-content: flex-start; /* Alinea al principio de la página */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     min-height: 100vh;
   }
   
-  /* Título del formulario */
+
   h1 {
-    text-align: center; /* Centrar texto */
+    text-align: center;
     color: #0056b3;
-    font-size: 28px; /* Tamaño del texto */
-    font-weight: bold; /* Negrita */
-    margin: 20px 0; /* Espaciado superior e inferior */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+    font-size: 28px; 
+    font-weight: bold;
+    margin: 20px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   }
   
   
-  /* Estilo del contenedor */
+  
   form {
     background-color: #ffffff;
     padding: 25px 35px;
@@ -39,7 +39,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   }
   
-  /* Etiquetas */
+  
   label {
     display: block;
     margin-bottom: 8px;
@@ -47,7 +47,7 @@ body {
     color: #555;
   }
   
-  /* Campos de entrada */
+  
   input {
     width: 100%;
     padding: 12px;
@@ -64,7 +64,7 @@ body {
     box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
   }
   
-  /* Botón de envío */
+  
   button {
     width: 100%;
     padding: 12px;
@@ -83,7 +83,7 @@ body {
     transform: translateY(-2px);
   }
   
-  /* Zona de resultado */
+  
   #result {
     margin-top: 20px;
     padding: 15px;

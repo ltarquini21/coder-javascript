@@ -7,6 +7,7 @@ class Car {
     precioDescuento = 0;
     descripcion = "";
     cantidad = 0;
+
     constructor(id, modelo, year, descripcion, precio, precioDescuento, cantidad, kms) {
         this.id = id;
         this.modelo = modelo;
@@ -19,10 +20,6 @@ class Car {
     }
 
     toString() {
-
-        return `El modelo que cotizaste es ${this.modelo} y es del año ${this.year} con ${this.kms} kilómetros`;
+        return `El modelo que cotizaste es ${this.modelo} y es del año ${this.year} con ${this.kms} kilómetros.`;
     }
 }
-const modeloAuto = new Car(1, 'Volkswagen Fox', 2012, 'Sedán', 8500000, 120000, 1, 78453);
-
-console.log(modeloAuto.toString());

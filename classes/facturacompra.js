@@ -22,7 +22,7 @@ class FacturaCompra {
     }
 }
 
-console.table(ventas);
+// console.table(ventas);
 // VERIFICAR EL ORDEN DE LOS ITEMS
 const ventasMapeado = ventas.map((unaVenta) => {
     return new FacturaCompra(unaVenta.id, unaVenta.cliente, unaVenta.fechaDeCompra, unaVenta.detalle.map((unItem) => {
@@ -30,4 +30,4 @@ const ventasMapeado = ventas.map((unaVenta) => {
     }));
 });
 
-console.log(ventasMapeado);
+// console.log(ventasMapeado);
