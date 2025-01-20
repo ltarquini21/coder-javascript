@@ -33,42 +33,47 @@ const validandoModeloACotizar = (modelo = "carForm") => {
 }
 
 
-const crearEvento = (modelo) => {
+const crearEvento = (modelo, year) => {
     const error = validandoModeloACotizar(modelo);
-    if(error !== null){
+    if (error !== null) {
         alert(error);
         return false;
-    
     }
 
     const carExistente = buscarModeloPorNombre(modelo);
-    if(carExistente){
+    if (carExistente) {
         alert("El modelo ya existe");
         return false;
     }
-    const nuevoModelo = new Car(modelos.length +1, modelo);
-    localStorage.setItem("unModelo", JSON.stringify(nuevoModelo))
-    modelos.unshift(nuevoModelo);
-    localStorage.setItem("Modelos", JSON.stringify(modelos))
-    alert("El modelo se agregó exitosamente")
-    return true;
 
-}
+    const nuevoModelo = new Car(
+        modelos.length + 1,  // ID
+        modelo,              // Nombre del modelo
+        year                 // Año del modelo
+    );
+
+    localStorage.setItem("unModelo", JSON.stringify(nuevoModelo));
+    modelos.unshift(nuevoModelo);
+    localStorage.setItem("Modelos", JSON.stringify(modelos));
+    alert("El modelo se agregó exitosamente");
+    return true;
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     recuperarDelStorage();
 })
 const form = document.getElementById("carForm");
-form.addEventListener("submit", (event)=> {
+form.addEventListener("submit", (event) => {
     event.preventDefault();
-    // console.log(event);
     
     const nombreAutoIngresado = document.getElementById("carName").value;
     const modeloAutoIngresado = document.getElementById("carYear").value;
-    if(crearEvento(nombreAutoIngresado, modeloAutoIngresado)){
-        // console.table(modelos);
+
+    if (crearEvento(nombreAutoIngresado, modeloAutoIngresado)) {
         form.reset();
     }
-})
+});
+
 
 
     const autosBusqueda = [
