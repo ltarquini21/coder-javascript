@@ -7,7 +7,7 @@
   <title>Cotización de Autos</title>
 </head>
 <body>
-  <h1>Cotización de Autos | Preentrega N°3 - Tarquini Laureano</h1>
+  <h1>Cotización de Autos | Entrega Final - Tarquini Laureano</h1>
   <form id="carForm">
     <label for="carName">Nombre del auto:</label>
     <input type="text" id="carName" name="carName" placeholder="Ej: Volkswagen Bora" />
@@ -15,8 +15,9 @@
     <input type="number" id="carYear" name="carYear" placeholder= "Ej: 2025" />
     <button type="submit">Guardar</button>
   </form>
-  
+  <ul id="listaModelos" class="lista-modelos"></ul>
   <div id="result" style="margin-top: 20px; color: green; font-weight: bold;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./scripts/constantes.js"></script>
   <script src="./classes/car.js"></script>
   <script src="./classes/facturacompra.js"></script>

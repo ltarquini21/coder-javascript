@@ -97,3 +97,39 @@ body {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
   
+
+  .lista-modelos {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-modelos li {
+    background-color: #f4f4f4;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000000;
+    text-align: initial;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.lista-modelos button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.lista-modelos button:first-of-type {
+    background-color: #007bff;
+    color: white;
+}
+
+.lista-modelos button:last-of-type {
+    background-color: #dc3545;
+    color: white;
+}
