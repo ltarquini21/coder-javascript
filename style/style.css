@@ -66,22 +66,20 @@ body {
   
   
   button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
     font-size: 16px;
-    font-weight: bold;
+    padding: 10px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  button:hover {
+    margin-left: 10px;
+}
+
+button:hover {
     background-color: #0056b3;
-    transform: translateY(-2px);
-  }
+}
+
   
   
   #result {

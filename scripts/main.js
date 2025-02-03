@@ -44,7 +44,7 @@ const renderizarModelos = () => {
 
 
         const btnVer = document.createElement("button");
-        btnVer.textContent = "Ver";
+        btnVer.textContent = "Ver modelo";
         btnVer.addEventListener("click", () => {
             Swal.fire({
                 title: car.modelo,
@@ -63,6 +63,10 @@ const renderizarModelos = () => {
         const btnEliminar = document.createElement("button");
         btnEliminar.textContent = "Eliminar";
         btnEliminar.addEventListener("click", () => {
+        
+        });
+        
+        btnEliminar.addEventListener("click", () => {
             Swal.fire({
                 title: "¿Estás seguro?",
                 text: "Esta acción eliminará el modelo de la lista.",
@@ -78,12 +82,25 @@ const renderizarModelos = () => {
                 hideClass: {
                     popup: "animate__animated animate__fadeOutDown animate__faster"
                 }
-            })
-            modelos.splice(index, 1);
-            localStorage.setItem("Modelos", JSON.stringify(modelos));
-            renderizarModelos();
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    
+                    modelos.splice(index, 1);
+                    localStorage.setItem("Modelos", JSON.stringify(modelos));
+                    renderizarModelos();
+                    Swal.fire({
+                        title: "¡Eliminado!",
+                        text: "El modelo ha sido eliminado.",
+                        icon: "success",
+                        confirmButtonText: "Aceptar"
+                    });
+                } else {
+                    
+                    console.log('Eliminación cancelada');
+                }
+            });
         });
-
+        
 
         item.appendChild(btnVer);
         item.appendChild(btnEliminar);
@@ -151,10 +168,5 @@ form.addEventListener("submit", (event) => {
 
 fetch("https://parallelum.com.br/fipe/api/v1/carros/marcas")
     .then(response => response.json())
-    .then(data => {
-        let lista = document.getElementById();
-        data.forEach(marca => {
-            lista.innerHTML += `<p>${marca.nome}</p>`;
-        });
-    })
-    .catch(error => console.error("Error:", error));
+    .then(data => console.log("Datos cargados:", data))
+    .catch(error => console.error("Error al cargar API:", error));
